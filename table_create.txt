@@ -1,0 +1,19 @@
+table_create.txt
+
+// table of dates
+
+CREATE TABLE `dates` (  `date` DATE not null  PRIMARY KEY
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into `dates` VALUES (2005-01-01);
+
+// table of eur rates
+
+CREATE TABLE `eur_rates` (
+`date` DATE not null  PRIMARY KEY,
+`rate` float
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+// table of rub rates
