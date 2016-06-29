@@ -23,11 +23,13 @@ $json->cols[0]->label = 'Topping';
 $json->cols[0]->pattern = '';
 $json->cols[0]->type = 'string';
 
-$json->cols[1] = new stdClass;
-$json->cols[1]->id = '';
-$json->cols[1]->label = 'Slices';
-$json->cols[1]->pattern = '';
-$json->cols[1]->type = 'number';
+$json->cols[1] = {
+	$id = '';
+	$label = 'Slices';
+	$pattern = '';
+	$type = 'number';
+};
+
 
 
 var_dump($json);
@@ -42,7 +44,7 @@ $str = json_encode($dec);
 //echo $str;
 //print_r($dec);
 echo "</br>";
-var_dump($dec);
+var_dump($dec->rows[0]);
 
 //print_r($dec);
 
