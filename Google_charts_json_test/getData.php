@@ -1,5 +1,11 @@
 <?php
 
+$table = [
+['test1', 2],
+['test2', 1],
+['test3', 3],
+];
+
 $json = array();
 $json['cols'] = array(
         array('label' => 'Topping', 'type' => 'string'),
