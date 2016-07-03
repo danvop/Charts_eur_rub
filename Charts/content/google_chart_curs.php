@@ -12,9 +12,21 @@ if (!$conn) {
 }
 // echo "Connected successfully";
 
-$sql = "SELECT *  
-        FROM eur_rates 
-        WHERE date between '2015-06-17' and '2016-06-24'";
+// $sql = "SELECT *  
+//         FROM eur_rates 
+//         WHERE date between '2015-06-17' and '2016-06-24'";
+
+$sql = "SELECT 
+        dates.date, eur_rates.rate AS ecb_rate, eur_rub_cbr_rates.rate AS cbr_rate
+      FROM dates 
+      LEFT JOIN  
+        eur_rates on dates.date=eur_rates.date 
+      LEFT JOIN  
+        eur_rub_cbr_rates on dates.date=eur_rub_cbr_rates.date
+      WHERE 
+      dates.date between '2015-06-17' and '2016-06-24'";
+
+
 $result = $conn->query($sql);
 
 
@@ -30,7 +42,7 @@ $json['cols'] = array(
 while ($row = $result->fetch_assoc()) {
     $temp = [];
     $temp[] = array('v' => $row['date']);
-    $temp[] = array('v' => $row['rate']);
+    $temp[] = array('v' => $row['ecb_rate']);
     $rows[] = array('c' => $temp);
 }
 

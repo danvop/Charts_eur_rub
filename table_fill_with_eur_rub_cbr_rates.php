@@ -23,7 +23,7 @@ try {
       //
       $param["FromDate"] = "2005-02-23T12:10:00";
       $param["ToDate"] = "2016-07-02T12:10:00";
-      $param["ValutaCode"] = "R01235";
+      $param["ValutaCode"] = "R01239";
 
       $res = $client->GetCursDynamicXML($param);
       //$res->GetCursDynamicXMLResponse;
