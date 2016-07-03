@@ -24,7 +24,7 @@ $sql = "SELECT
       LEFT JOIN  
         eur_rub_cbr_rates on dates.date=eur_rub_cbr_rates.date
       WHERE 
-      dates.date between '2016-04-01' and '2016-07-01'";
+      dates.date between '2014-12-01' and '2015-02-01'";
 
 
 $result = $conn->query($sql);
@@ -39,14 +39,24 @@ $json['cols'] = array(
     );
 
 
+$rows_cnt = 0;
 while ($row = $result->fetch_assoc()) {
     $temp = [];
-    $temp[] = array('v' => $row['date']);
-    $temp[] = array('v' => $row['ecb_rate']);
-    $temp[] = array('v' => $row['cbr_rate']);
-    $rows[] = array('c' => $temp);
+    $temp[0] = array('v' => $row['date']);
+        
+    if ($row['ecb_rate'] == null and $rows_cnt!=0){
+        $temp_row = $rows[$rows_cnt-1]['c'][1]['v'];
+        $row['ecb_rate'] = $temp_row;
+    }
+    $temp[1] = array('v' => $row['ecb_rate']);
+    
+    if ($row['cbr_rate'] == null and $rows_cnt!=0){
+        $temp_row = $rows[$rows_cnt-1]['c'][2]['v'];
+        $row['cbr_rate'] = $temp_row;
+    }
+    $temp[2] = array('v' => $row['cbr_rate']);
+    $rows[$rows_cnt++] = array('c' => $temp);
 }
-
 
 $json['rows'] = $rows;
 
