@@ -24,7 +24,7 @@ $sql = "SELECT
       LEFT JOIN  
         eur_rub_cbr_rates on dates.date=eur_rub_cbr_rates.date
       WHERE 
-      dates.date between '2015-06-17' and '2016-06-24'";
+      dates.date between '2016-04-01' and '2016-07-01'";
 
 
 $result = $conn->query($sql);
@@ -34,8 +34,8 @@ $result = $conn->query($sql);
 $json = array();
 $json['cols'] = array(
         array('label' => 'date', 'type' => 'string'),
-        array('label' => 'EUR RUB ECB', 'type' => 'number')
-        // array('label' => 'EUR CBR', 'type' => 'number')
+        array('label' => 'Европейский ЦБ', 'type' => 'number'),
+        array('label' => 'ЦБ России', 'type' => 'number')
     );
 
 
@@ -43,6 +43,7 @@ while ($row = $result->fetch_assoc()) {
     $temp = [];
     $temp[] = array('v' => $row['date']);
     $temp[] = array('v' => $row['ecb_rate']);
+    $temp[] = array('v' => $row['cbr_rate']);
     $rows[] = array('c' => $temp);
 }
 
@@ -66,12 +67,13 @@ $json['rows'] = $rows;
       
       var formatter = new google.visualization.NumberFormat(
       {pattern: '###.####'});
-        formatter.format(data, 1);    
+        formatter.format(data, 1);
+        formatter.format(data, 2);     
       
       var options = {
         chart: {
-          title: 'Box Office Earnings in First Two Weeks of Opening',
-          subtitle: 'in millions of dollars (USD)'
+          title: 'Курсы евро от европейского и российского ЦБ',
+          subtitle: 'в рублях за евро'
         },
         width: 900,
         height: 500,
