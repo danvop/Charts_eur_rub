@@ -16,4 +16,9 @@ CREATE TABLE `eur_rates` (
 
 
 
-// table of rub rates
+// table of eur_rub_cbr rates
+
+CREATE TABLE `eur_rub_cbr_rates` (
+`date` DATE not null  PRIMARY KEY,
+`rate` float
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

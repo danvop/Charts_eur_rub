@@ -31,6 +31,11 @@ try {
     
     foreach ($items as $item) {
                 $curs_date = $item->getElementsByTagName('CursDate')->item(0)->nodeValue;
+                
+                //convert date format from 2000-07-01T00:00:00+00:00 to 2000-07-01
+                $curs_date = date_create($curs_date);
+                $curs_date = date_format($curs_date, 'Y-m-d');
+                
                 $curs = $item->getElementsByTagName('Vcurs')->item(0)->nodeValue;
                 $list[$curs_date] = floatval(str_replace(',', '.', $curs));
             }
@@ -48,8 +53,8 @@ try {
 function list_to_table($list){
     echo "<table>";
       echo "<tr>";
-        echo "<th>Name</th>";
-        echo "<th>Curs</th>";
+        // echo "<th>Name</th>";
+        // echo "<th>Curs</th>";
       echo "</tr>";
       foreach($list as $key => $item){
         echo "<tr>";

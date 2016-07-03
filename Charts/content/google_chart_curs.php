@@ -12,9 +12,21 @@ if (!$conn) {
 }
 // echo "Connected successfully";
 
-$sql = "SELECT *  
-        FROM eur_rates 
-        WHERE date between '2015-06-17' and '2016-06-24'";
+// $sql = "SELECT *  
+//         FROM eur_rates 
+//         WHERE date between '2015-06-17' and '2016-06-24'";
+
+$sql = "SELECT 
+        dates.date, eur_rates.rate AS ecb_rate, eur_rub_cbr_rates.rate AS cbr_rate
+      FROM dates 
+      LEFT JOIN  
+        eur_rates on dates.date=eur_rates.date 
+      LEFT JOIN  
+        eur_rub_cbr_rates on dates.date=eur_rub_cbr_rates.date
+      WHERE 
+      dates.date between '2014-12-01' and '2015-02-01'";
+
+
 $result = $conn->query($sql);
 
 
@@ -22,18 +34,29 @@ $result = $conn->query($sql);
 $json = array();
 $json['cols'] = array(
         array('label' => 'date', 'type' => 'string'),
-        array('label' => 'EUR RUB ECB', 'type' => 'number')
-        // array('label' => 'EUR CBR', 'type' => 'number')
+        array('label' => 'Европейский ЦБ', 'type' => 'number'),
+        array('label' => 'ЦБ России', 'type' => 'number')
     );
 
 
+$rows_cnt = 0;
 while ($row = $result->fetch_assoc()) {
     $temp = [];
-    $temp[] = array('v' => $row['date']);
-    $temp[] = array('v' => $row['rate']);
-    $rows[] = array('c' => $temp);
+    $temp[0] = array('v' => $row['date']);
+        
+    if ($row['ecb_rate'] == null and $rows_cnt!=0){
+        $temp_row = $rows[$rows_cnt-1]['c'][1]['v'];
+        $row['ecb_rate'] = $temp_row;
+    }
+    $temp[1] = array('v' => $row['ecb_rate']);
+    
+    if ($row['cbr_rate'] == null and $rows_cnt!=0){
+        $temp_row = $rows[$rows_cnt-1]['c'][2]['v'];
+        $row['cbr_rate'] = $temp_row;
+    }
+    $temp[2] = array('v' => $row['cbr_rate']);
+    $rows[$rows_cnt++] = array('c' => $temp);
 }
-
 
 $json['rows'] = $rows;
 
@@ -54,12 +77,13 @@ $json['rows'] = $rows;
       
       var formatter = new google.visualization.NumberFormat(
       {pattern: '###.####'});
-        formatter.format(data, 1);    
+        formatter.format(data, 1);
+        formatter.format(data, 2);     
       
       var options = {
         chart: {
-          title: 'Box Office Earnings in First Two Weeks of Opening',
-          subtitle: 'in millions of dollars (USD)'
+          title: 'Курсы евро от европейского и российского ЦБ',
+          subtitle: 'в рублях за евро'
         },
         width: 900,
         height: 500,
