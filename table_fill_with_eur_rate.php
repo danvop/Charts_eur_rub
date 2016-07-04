@@ -18,7 +18,7 @@ $XML=simplexml_load_file("http://www.ecb.europa.eu/stats/exchange/eurofxref/html
 
 
 foreach ($XML->DataSet->Series->Obs as $rate) {
-    $sql = "insert into eur_rates values('" . $rate["TIME_PERIOD"] . "', ". $rate["OBS_VALUE"] . ")";
+    $sql = "update into eur_rates values('" . $rate["TIME_PERIOD"] . "', ". $rate["OBS_VALUE"] . ")";
     //echo $sql;
     if ($conn->query($sql) === true) {
         echo "New record created successfully";
