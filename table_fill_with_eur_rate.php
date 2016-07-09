@@ -1,7 +1,5 @@
 <?php
 require 'db_pass.php';
-$db_name = 'test';
-
 
 $conn = mysqli_connect($servername, $db_root, $db_pass, $db_name);
 

@@ -2,7 +2,7 @@
 
 require '../db_pass.php';
 $db_name = 'test';
-//$weeks = 1;
+$weeks = 7;
 
 
 $conn = mysqli_connect($servername, $db_root, $db_pass, $db_name);
@@ -10,11 +10,6 @@ $conn = mysqli_connect($servername, $db_root, $db_pass, $db_name);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-// echo "Connected successfully";
-
-// $sql = "SELECT *  
-//         FROM eur_rates 
-//         WHERE date between '2015-06-17' and '2016-06-24'";
 
 $sql = "SELECT 
         dates.date, eur_rates.rate AS ecb_rate, eur_rub_cbr_rates.rate AS cbr_rate
@@ -24,8 +19,7 @@ $sql = "SELECT
       LEFT JOIN  
         eur_rub_cbr_rates on dates.date=eur_rub_cbr_rates.date
       WHERE 
-      dates.date between '2014-12-01' and '2015-02-01'";
-
+      dates.date between curdate() - interval $weeks week and curdate()";
 
 $result = $conn->query($sql);
 
