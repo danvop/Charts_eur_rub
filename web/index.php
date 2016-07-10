@@ -1,4 +1,5 @@
 <?php
+	Header("Cache-Control: no-cache, no-store, must-revalidate, max-age=0");
     require 'php/lib.inc.php';
     require 'php/data.inc.php';
     
