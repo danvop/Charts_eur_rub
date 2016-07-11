@@ -15,7 +15,7 @@ $sql = "SELECT
         dates.date, eur_rub_ecb_rates.rate AS ecb_rate, eur_rub_cbr_rates.rate AS cbr_rate
       FROM dates 
       LEFT JOIN  
-        eur_rates on dates.date=eur_rub_ecb_rates.date 
+        eur_rub_ecb_rates on dates.date=eur_rub_ecb_rates.date 
       LEFT JOIN  
         eur_rub_cbr_rates on dates.date=eur_rub_cbr_rates.date
       WHERE 
