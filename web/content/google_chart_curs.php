@@ -1,7 +1,7 @@
 <?php
 
 require '../db_pass.php';
-$db_name = 'test';
+//$db_name = 'test';
 $weeks = 7;
 
 
