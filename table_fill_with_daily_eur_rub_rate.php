@@ -1,5 +1,6 @@
 <?php
-require 'db_pass.php';
+//Помещение в таблицу РУБ - ЕВРО по ЕСВ за текущий день
+require 'web/db_pass.php';
 
 $conn = mysqli_connect($servername, $db_root, $db_pass, $db_name);
 

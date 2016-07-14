@@ -1,4 +1,6 @@
 <?php
+//Наполнение таблицы курсом РУБ - ЕВРО за указанный период ["FromDate"] ["ToDate"]
+
 require 'db_pass.php';
 $db_name = 'test';
 

@@ -1,4 +1,6 @@
 <?php
+//Наполнение таблицы данными курса РУБ - ЕВРО с 2005-01-01 по текущий момент
+//
 require 'db_pass.php';
 
 $conn = mysqli_connect($servername, $db_root, $db_pass, $db_name);
