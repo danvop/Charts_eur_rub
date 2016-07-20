@@ -26,7 +26,7 @@ foreach ($XML->Cube->Cube->Cube as $rate) {
 
 //echo $ins_rate.' '.$ins_date;
 
-$sql = "insert into eur_ecb_rates values('" . $ins_date . "', ". $ins_rate . ")";
+$sql = "insert into eur_rub_ecb_rates values('" . $ins_date . "', ". $ins_rate . ")";
     //echo $sql;
     if ($conn->query($sql) === true) {
         echo "New record created successfully";
