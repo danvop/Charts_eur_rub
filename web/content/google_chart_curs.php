@@ -1,6 +1,6 @@
 <?php
 
-require 'db_pass.php';
+require '../db_pass.php';
 //$db_name = 'test';
 $weeks = 7;
 
