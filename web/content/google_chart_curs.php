@@ -19,7 +19,8 @@ $sql = "SELECT
       LEFT JOIN  
         eur_rub_cbr_rates on dates.date=eur_rub_cbr_rates.date
       WHERE 
-      dates.date between curdate() - interval $weeks week and curdate()";
+      dates.date between curdate() - interval $weeks week and curdate()
+      ORDER BY dates.date";
 
 $result = $conn->query($sql);
 
