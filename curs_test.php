@@ -12,7 +12,7 @@ try {
       echo 'Операция '.$e->faultcode.' вернула ошибку: '.$e->getMessage();
 }*/
 //close issuedfdfda
-//fix issue 2 second
+//fix issue 3 third
 
 class CBRAgent
 {
