@@ -27,9 +27,9 @@ class CBRAgent
             $this->list = array();
  
             $root = $xml->documentElement;
-            $items = $root->getElementsByTagName('Valute');
+            $elements = $root->getElementsByTagName('Valute');
  
-            foreach ($items as $item) {
+            foreach ($elements as $item) {
                 $code = $item->getElementsByTagName('CharCode')->item(0)->nodeValue;
                 $curs = $item->getElementsByTagName('Value')->item(0)->nodeValue;
                 $this->list[$code] = floatval(str_replace(',', '.', $curs));
