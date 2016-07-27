@@ -11,7 +11,7 @@ try {
 } catch (SoapFault $e) {
       echo 'Операция '.$e->faultcode.' вернула ошибку: '.$e->getMessage();
 }*/
-
+//close issue
 
 class CBRAgent
 {
