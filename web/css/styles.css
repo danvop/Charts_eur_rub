@@ -7,6 +7,12 @@ ul.topnav {
   background-color: #333;
 }
 
+.canvas{
+        width: 70%;
+        padding: 25px;
+        margin: 25px;
+}
+
 ul.topnav li {float: left;}
 
 ul.topnav li a {

@@ -1,5 +1,5 @@
 <?php
-	Header("Cache-Control: no-cache, no-store, must-revalidate, max-age=0");
+Header("Cache-Control: no-cache, no-store, must-revalidate, max-age=0");
     require 'php/lib.inc.php';
     require 'php/data.inc.php';
     
@@ -11,7 +11,7 @@
 </head>
 <title>HTML Tutorial</title>
 <!-- Пренести стили в одтельный файл -->
-<style>
+<style type="text/css">
 
 </style>
 <!--  -->
@@ -35,16 +35,17 @@
 <!-- one more menu -->
 <div>
     <?php
-        if (!drawMenu($chart_menu, "topnav"))
+    if (!drawMenu($chart_menu, "topnav")) {
         echo ERR_DRAW_ON_LEFT_MENU;
+    }
     ?>
 </div>
 <div id="content">
     <?php
-    if (isset($_GET['id'])){
+    if (isset($_GET['id'])) {
         $id = strtolower(cleanStr($_GET['id']));
         include 'content/'.$id.'.php';
-    }   
+    }
     ?>
             
         </div>
