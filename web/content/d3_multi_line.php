@@ -55,7 +55,10 @@ d3.json("php/d3_data_json.php", function(error, data) {
 
   // Scale the range of the data
   x.domain(d3.extent(data, function(d) { return d.date; }));
-  y.domain([0, d3.max(data, function(d) {
+  y.domain([
+    d3.min(data, function(d) {
+    return Math.min(d.cbr_rate, d.ecb_rate); }), 
+    d3.max(data, function(d) {
     return Math.max(d.cbr_rate, d.ecb_rate); })]);
 
   // Add the valueline path.
