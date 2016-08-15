@@ -1,6 +1,3 @@
-
-<div class="canvas" id="canvas_div"><a href="http://www.chartjs.org/docs/#line-chart"> chart js line chart</a>
-
 <?php
 require '../db_pass.php';
 //$db_name = 'test';
@@ -43,8 +40,9 @@ while ($row = $result->fetch_assoc()) {
     $rows_cnt++;
 }
 ?>
+<a href="http://www.chartjs.org/docs/#line-chart"> chart js line chart</a>
 
-
+<div class="canvas" id="canvas_div">
 
 <script src="js/Chart.js"></script>
 
