@@ -39,6 +39,7 @@ while ($row = $result->fetch_assoc()) {
     }
     $rows_cnt++;
 }
+
 ?>
 <a href="http://www.chartjs.org/docs/#line-chart"> chart js line chart</a>
 
