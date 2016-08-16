@@ -8,7 +8,7 @@
 <script>
 
 // set the dimensions and margins of the graph
-var margin = {top: 20, right: 20, bottom: 30, left: 50},
+var margin = {top: 20, right: 20, bottom: 60, left: 50},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -17,7 +17,9 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
 var parseTime = d3.timeParse("%Y-%m-%d");
 
 // set the ranges
-var x = d3.scaleTime().range([0, width]);
+var x = d3.scaleTime()
+  .range([0, width])
+  //.tickFormat("%Y-%m-%d");
 var y = d3.scaleLinear().range([height, 0]);
 
 // define the 1st line
@@ -41,8 +43,7 @@ var svg = d3.select("body").append("svg")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Get the data
-//d3.tsv("content/data.tsv", function(error, data) {
-//d3.json("content/data.json", function(error, data) {
+//d3.json doesn't work with php echo <\?=...?>, only
 d3.json("php/d3_data_json.php", function(error, data) {
   if (error) throw error;
 
@@ -54,8 +55,18 @@ d3.json("php/d3_data_json.php", function(error, data) {
   });
 
   // Scale the range of the data
+  //x.domain([new Date(2016, 07, 20), new Date(2016, 08, 5)]);
   x.domain(d3.extent(data, function(d) { return d.date; }));
-  y.domain([0, d3.max(data, function(d) {
+
+  //.ticks(20);
+  // x.ticks(20);
+  // x.tickFormat("%Y-%m-%d");
+  
+ 
+  y.domain([
+    d3.min(data, function(d) {
+    return Math.min(d.cbr_rate, d.ecb_rate); }), 
+    d3.max(data, function(d) {
     return Math.max(d.cbr_rate, d.ecb_rate); })]);
 
   // Add the valueline path.
@@ -79,7 +90,12 @@ d3.json("php/d3_data_json.php", function(error, data) {
   // Add the X Axis
   svg.append("g")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+      .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%Y-%m-%d")))
+      .selectAll("text")  
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em")
+            .attr("transform", "rotate(-65)" );
 
   // Add the Y Axis
   svg.append("g")

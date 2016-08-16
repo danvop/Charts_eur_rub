@@ -18,10 +18,36 @@ $sql = "SELECT
       ORDER BY dates.date";
 $result = $conn->query($sql);
 
+// while ($row = $result->fetch_assoc()) {
+//     $data[] = $row;
+//     //print_r(json_encode($data));
+    
+// }
+
 $rows_cnt = 0;
+$data = [];
 while ($row = $result->fetch_assoc()) {
-    $data[] = $row;
-    //print_r(json_encode($data));
+    $dates[] = $row['date'];
+   
+    if ($row['ecb_rate'] == null and $rows_cnt!=0) {
+        $ecb_rate[] = $ecb_rate[$rows_cnt - 1];
+    } else {
+        $ecb_rate[] = $row['ecb_rate'];
+    }
+
+    if ($row['cbr_rate'] == null and $rows_cnt!=0) {
+        $cbr_rate[] = $cbr_rate[$rows_cnt - 1];
+    } else {
+        $cbr_rate[] = $row['cbr_rate'];
+    }
+    
+    $data[] = array(
+        'date' => $dates[$rows_cnt],
+        'ecb_rate' => $ecb_rate[$rows_cnt],
+        'cbr_rate' => $cbr_rate[$rows_cnt]
+        );
+
+    $rows_cnt++;
 }
 
 echo json_encode($data);
