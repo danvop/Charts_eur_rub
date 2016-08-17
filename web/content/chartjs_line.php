@@ -59,8 +59,10 @@ var data_test = {
             label: "EUROPE CB EUR RUB rates",
             fill: false,
             lineTension: 0.1,
-            backgroundColor: "rgba(255,0,0,0.5)",
-            borderColor: "rgba(255,0,0,0.5)",
+            
+            backgroundColor: "rgba(75,192,192,0.4)",
+            borderColor: "rgba(75,192,192,1)",
+            
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
@@ -81,8 +83,8 @@ var data_test = {
             label: "Russian CB EUR RUB rates",
             fill: false,
             lineTension: 0.1,
-            backgroundColor: "rgba(75,192,192,0.4)",
-            borderColor: "rgba(75,192,192,1)",
+            backgroundColor: "rgba(255,0,0,0.5)",
+            borderColor: "rgba(255,0,0,0.5)",
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,

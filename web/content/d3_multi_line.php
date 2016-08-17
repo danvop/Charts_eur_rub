@@ -74,7 +74,7 @@ d3.json("php/d3_data_json.php", function(error, data) {
       .data([data])
       .attr("class", "d3_line")
       .style("fill", "none")
-      .style("stroke", "steelblue")
+      .style("stroke", "red")
       .style("stroke-width", "4px")
       .attr("d", valueline);
 
@@ -83,7 +83,7 @@ d3.json("php/d3_data_json.php", function(error, data) {
       .data([data])
       .attr("class", "d3_line")
       .style("fill", "none")
-      .style("stroke", "red")
+      .style("stroke", "steelblue")
       .style("stroke-width", "4px")
       .attr("d", valueline2);
 
