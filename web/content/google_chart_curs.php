@@ -2,7 +2,7 @@
 
 require '../db_pass.php';
 //$db_name = 'test';
-$weeks = 7;
+$weeks = 3;
 
 
 $conn = mysqli_connect($servername, $db_root, $db_pass, $db_name);
@@ -39,13 +39,13 @@ while ($row = $result->fetch_assoc()) {
     $temp = [];
     $temp[0] = array('v' => $row['date']);
         
-    if ($row['ecb_rate'] == null and $rows_cnt!=0){
+    if ($row['ecb_rate'] == null and $rows_cnt!=0) {
         $temp_row = $rows[$rows_cnt-1]['c'][1]['v'];
         $row['ecb_rate'] = $temp_row;
     }
     $temp[1] = array('v' => $row['ecb_rate']);
     
-    if ($row['cbr_rate'] == null and $rows_cnt!=0){
+    if ($row['cbr_rate'] == null and $rows_cnt!=0) {
         $temp_row = $rows[$rows_cnt-1]['c'][2]['v'];
         $row['cbr_rate'] = $temp_row;
     }
