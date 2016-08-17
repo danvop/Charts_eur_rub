@@ -8,7 +8,7 @@
 <script>
 
 // set the dimensions and margins of the graph
-var margin = {top: 20, right: 60, bottom: 60, left: 50},
+var margin = {top: 60, right: 60, bottom: 60, left: 50},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -102,18 +102,26 @@ d3.json("php/d3_data_json.php", function(error, data) {
       .call(d3.axisLeft(y));
 
   svg.append("text")
-  .attr("transform", "translate(" + (width+3) + "," + y(data[data.length - 1].ecb_rate) + ")")
-  .attr("dy", ".35em")
-  .attr("text-anchor", "start")
-  .style("fill", "red")
-  .text("cbr_rate");
+      .attr("class", "axis axis--y")
+      //a.call(d3.axisLeft(y).ticks(10, "s"))
+      .attr("x", 20)
+      .attr("y", -10)
+      //.attr("y", y(y.ticks(10).pop()))
+      .attr("dy", "0.35em")
+      .attr("text-anchor", "start")
+      .attr("fill", "steelblue")
+      .text("Курс Евро Европейский ЦБ");
 
   svg.append("text")
-  .attr("transform", "translate(" + (width+3) + "," + y(data[data.length - 1].cbr_rate) + ")")
-  .attr("dy", ".35em")
-  .attr("text-anchor", "start")
-  .style("fill", "steelblue")
-  .text("cbr_rate");
+      .attr("class", "axis axis--y")
+      //a.call(d3.axisLeft(y).ticks(10, "s"))
+      .attr("x", 20)
+      .attr("y", -30)
+      //.attr("y", y(y.ticks(10).pop()))
+      .attr("dy", "0.35em")
+      .attr("text-anchor", "start")
+      .attr("fill", "red")
+      .text("Курс Евро ЦБ РФ");
 
 });
 </script>
