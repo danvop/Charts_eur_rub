@@ -8,7 +8,7 @@
 <script>
 
 // set the dimensions and margins of the graph
-var margin = {top: 20, right: 20, bottom: 60, left: 50},
+var margin = {top: 20, right: 60, bottom: 60, left: 50},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -100,6 +100,20 @@ d3.json("php/d3_data_json.php", function(error, data) {
   // Add the Y Axis
   svg.append("g")
       .call(d3.axisLeft(y));
+
+  svg.append("text")
+  .attr("transform", "translate(" + (width+3) + "," + y(data[data.length - 1].ecb_rate) + ")")
+  .attr("dy", ".35em")
+  .attr("text-anchor", "start")
+  .style("fill", "red")
+  .text("cbr_rate");
+
+  svg.append("text")
+  .attr("transform", "translate(" + (width+3) + "," + y(data[data.length - 1].cbr_rate) + ")")
+  .attr("dy", ".35em")
+  .attr("text-anchor", "start")
+  .style("fill", "steelblue")
+  .text("cbr_rate");
 
 });
 </script>
