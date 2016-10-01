@@ -1,4 +1,3 @@
-
 <a href="http://bl.ocks.org/mbostock/3884955"> D3 multi line chart</a>
 
 <div>

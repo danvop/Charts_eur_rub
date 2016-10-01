@@ -4,35 +4,25 @@ Header("Cache-Control: no-cache, no-store, must-revalidate, max-age=0");
     require 'php/data.inc.php';
     
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="css/styles.css">
-</head>
-<title>HTML Tutorial</title>
-<!-- Пренести стили в одтельный файл -->
-<style type="text/css">
 
-</style>
-<!--  -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title>Bootstrap Case</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 <body>
+
+
 <?php
         
 ?>
-<h1>Разные графики для курсов</h1>
-<!-- <div>
-    
-    <ul class="topnav">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#news">News</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-      <li class="icon">
-        <a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
-    </li>
-    </ul>
-</div> -->
-<!-- one more menu -->
+<h1>Линейные графики</h1>
+
 <div>
     <?php
     if (!drawMenu($chart_menu, "topnav")) {
@@ -40,17 +30,23 @@ Header("Cache-Control: no-cache, no-store, must-revalidate, max-age=0");
     }
     ?>
 </div>
-<div id="content">
+<div class="container">
+
+  
     <?php
     if (isset($_GET['id'])) {
         $id = strtolower(cleanStr($_GET['id']));
         include 'content/'.$id.'.php';
     }
     ?>
-            
-        </div>
+  
+  
 
 <p>This is a paragraph.</p>
+
+</div>
+
+
 
 </body>
 </html>
