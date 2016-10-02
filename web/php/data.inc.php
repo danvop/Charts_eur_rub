@@ -13,6 +13,6 @@ $chart_menu = array(
     array('link' => 'chartjs', 'href' => 'index.php?id=chartjs_line'),
     array('link' => 'd3 multi line', 'href' => 'index.php?id=d3_multi_line'),
     //array('link' => 'highcharts', 'href' => 'index.php?id=highcharts_stock'),
-    array('link' => 'Как это работает?', 'href' => 'index.php?id=how_it_works')
+    array('link' => 'Как это работает?', 'href' => 'index.php?id=how')
     );
 /*menu*/

@@ -15,7 +15,7 @@ Header("Cache-Control: no-cache, no-store, must-revalidate, max-age=0");
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- Custom styles for this template -->
-  <link href="css/justified-nav.css" rel="stylesheet">
+  
   <!-- <link href="css/sticky-footer-navbar.css" rel="stylesheet"> -->
 </head>
 <body>
@@ -41,9 +41,7 @@ Header("Cache-Control: no-cache, no-store, must-revalidate, max-age=0");
     <!-- menu end -->
     
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">  
-          
+             
             <?php
             if (isset($_GET['id'])) {
                 $id = strtolower(cleanStr($_GET['id']));
@@ -59,16 +57,19 @@ Header("Cache-Control: no-cache, no-store, must-revalidate, max-age=0");
   
   
   
+
+          <!--  
+      <p>Этот проект на <a href="https://github.com/danvop/Charts_eur_rub">GitHub</a></p> 
+           content -->
+        
+  
   
 
-  </div>
-  <div class="container-fluid">
-  <footer class="footer">
-  
-      <p>Этот проект на <a href="https://github.com/danvop/Charts_eur_rub">GitHub</a>
-      </p>
-  </footer>
-  </div>
+
+<div class="container"> 
+<hr>
+<footer> Этот проект на <a href="https://github.com/danvop/Charts_eur_rub">GitHub</a> </footer>
+</div>
 
   </body>
   </html>

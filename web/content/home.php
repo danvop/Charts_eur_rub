@@ -1,9 +1,11 @@
 
 <h3> Цель </h3>
 <p>В данном проекте собраны примеры построения линейных графиков средствами трех популярых библиотек:</p>
-<a href="https://developers.google.com/chart/">Google chart</a></br>
-<a href="http://www.chartjs.org/">ChartJS</a></br>
-<a href="https://d3js.org/">D3</a></br>
+<ul>    
+<li><a href="https://developers.google.com/chart/">Google chart</a></li>  
+<li><a href="http://www.chartjs.org/">ChartJS</a></li>  
+<li><a href="https://d3js.org/">D3</a></li>
+</ul>
 <p>Пункты меню в загаловке ведут к графикам</p>
 <p>В качестве исходных данных для визуализации берется курс Евро-Руб по данным ЦБ России и Европейского ЦБ.</p>
 
