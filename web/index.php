@@ -50,11 +50,6 @@ Header("Cache-Control: no-cache, no-store, must-revalidate, max-age=0");
           
         </div>  
       </div>
-    <p>This is a paragraph.</p>
-
-    
-
-
   </div>
   </body>
   </html>
