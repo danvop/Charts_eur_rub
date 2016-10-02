@@ -1,3 +1,4 @@
+<div id="google_chart">
 <?php
 
 require '../db_pass.php';
@@ -59,8 +60,6 @@ $json['rows'] = $rows;
 
 ?>
 
-<html>
-<head>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['line']});
@@ -75,13 +74,15 @@ $json['rows'] = $rows;
         formatter.format(data, 1);
         formatter.format(data, 2);     
       
+      //calc width of div tag before
+      var gchart_width = document.getElementById("google_chart").offsetWidth
       var options = {
         chart: {
           title: 'Курсы евро от европейского и российского ЦБ',
           subtitle: 'в рублях за евро'
         },
-        width: 900,
-        height: 500,
+        width: gchart_width,
+        height: gchart_width/2,
 
         //selectionMode: 'multiple',
         tooltip: {},
@@ -92,10 +93,22 @@ $json['rows'] = $rows;
       var chart = new google.charts.Line(document.getElementById('line_top_x'));
 
       chart.draw(data, options);
+
     }
+    
+    // redraw chart on window resize
+    $(window).resize(function() {
+    if(this.resizeTO) clearTimeout(this.resizeTO);
+    this.resizeTO = setTimeout(function() {
+        $(this).trigger('resizeEnd');
+    }, 500);
+    });
+
+    //redraw graph when window resize is completed  
+    $(window).on('resizeEnd', function() {
+        drawChart();
+    });
   </script>
-</head>
-<body>
+
   <div id="line_top_x"></div>
-</body>
-</html>
+</div>

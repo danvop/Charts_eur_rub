@@ -4,53 +4,57 @@ Header("Cache-Control: no-cache, no-store, must-revalidate, max-age=0");
     require 'php/data.inc.php';
     
 ?>
+
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-<link rel="stylesheet" href="css/styles.css">
+  <title>Line charts</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<title>HTML Tutorial</title>
-<!-- Пренести стили в одтельный файл -->
-<style type="text/css">
-
-</style>
-<!--  -->
 <body>
-<?php
-        
-?>
-<h1>Разные графики для курсов</h1>
-<!-- <div>
-    
-    <ul class="topnav">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#news">News</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-      <li class="icon">
-        <a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
-    </li>
-    </ul>
-</div> -->
-<!-- one more menu -->
-<div>
-    <?php
-    if (!drawMenu($chart_menu, "topnav")) {
-        echo ERR_DRAW_ON_LEFT_MENU;
-    }
-    ?>
-</div>
-<div id="content">
-    <?php
-    if (isset($_GET['id'])) {
-        $id = strtolower(cleanStr($_GET['id']));
-        include 'content/'.$id.'.php';
-    }
-    ?>
-            
+    <!-- menu start-->
+    <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.php">Линейные графики</a>
         </div>
+          <?php
+            if (!drawMenu($chart_menu, "nav navbar-nav navbar-right")) {
+                echo ERR_DRAW_ON_LEFT_MENU;
+            }
+          ?>
+          <!-- script for highlite active menu -->
+          <script>
+            if(document.querySelector('a[href*="' + window.location.search + '"]').parentElement.setAttribute('class','active'));
+          </script>
+      </div>
+    </nav>
+    </div> 
+    <!-- menu end -->
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">  
+          
+            <?php
+            if (isset($_GET['id'])) {
+                $id = strtolower(cleanStr($_GET['id']));
+                include 'content/'.$id.'.php';
+            }
+            ?>
+          
+        </div>  
+      </div>
+    <p>This is a paragraph.</p>
 
-<p>This is a paragraph.</p>
+    
 
-</body>
-</html>
+
+  </div>
+  </body>
+  </html>
