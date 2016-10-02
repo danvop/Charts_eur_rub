@@ -41,7 +41,7 @@ while ($row = $result->fetch_assoc()) {
 }
 
 ?>
-<a href="http://www.chartjs.org/docs/#line-chart"> chart js line chart</a>
+<a href="http://www.chartjs.org/docs/#line-chart"> Документация на chartjs</a>
 
 <div class="canvas" id="canvas_div">
 
@@ -56,7 +56,7 @@ var data_test = {
     labels: <?=json_encode($labels)?>,
     datasets: [
         {
-            label: "EUROPE CB EUR RUB rates",
+            label: "Курс Евро-Руб Европейский ЦБ",
             fill: false,
             lineTension: 0.1,
             
@@ -80,7 +80,7 @@ var data_test = {
             spanGaps: false,
         },
         {
-            label: "Russian CB EUR RUB rates",
+            label: "Курс Евро-Руб ЦБ РФ",
             fill: false,
             lineTension: 0.1,
             backgroundColor: "rgba(255,0,0,0.5)",

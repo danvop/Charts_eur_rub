@@ -1,16 +1,25 @@
 
-<a href="http://bl.ocks.org/mbostock/3884955"> D3 multi line chart</a>
 
-<div>
+<a href="http://bl.ocks.org/mbostock/3884955"> Документация D3 multi line chart</a>
+
+<div id="d3">
+
+<!-- append chart's svg to tag above -->
+<d3chart></d3chart>
 
 <!-- load the d3.js library -->     
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
+function drawD3() {
 
+
+
+// calculate witht of d3
+var d3width = document.getElementById("d3").offsetWidth;
 // set the dimensions and margins of the graph
 var margin = {top: 60, right: 60, bottom: 60, left: 50},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    width = d3width - margin.left - margin.right,
+    height = d3width/2 - margin.top - margin.bottom;
 
 // parse the date / time
 //var parseTime = d3.timeParse("%_d-%b-%y");
@@ -35,7 +44,7 @@ var valueline2 = d3.line()
 // append the svg obgect to the body of the page
 // appends a 'group' element to 'svg'
 // moves the 'group' element to the top left margin
-var svg = d3.select("body").append("svg")
+var svg = d3.select("d3chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -124,5 +133,23 @@ d3.json("php/d3_data_json.php", function(error, data) {
       .text("Курс Евро ЦБ РФ");
 
 });
+};
+drawD3();
+
+// redraw chart on window resize
+    $(window).resize(function() {
+    if(this.resizeTO) clearTimeout(this.resizeTO);
+    this.resizeTO = setTimeout(function() {
+        $(this).trigger('resizeEnd');
+    }, 500);
+    });
+
+    //redraw graph when window resize is completed  
+    $(window).on('resizeEnd', function() {
+      // remove append childNode svg between d3chart tags
+      document.getElementsByTagName("d3chart")[0].childNodes[0].remove();
+      drawD3();
+    });
 </script>
+
 </div>
