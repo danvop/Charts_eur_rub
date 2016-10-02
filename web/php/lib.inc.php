@@ -5,7 +5,7 @@ function cleanStr($data)
     return trim(strip_tags($data));
 }
 
-function drawMenu($menu, $menuClass, $vertical = false)
+function drawMenu($menu, $menuClass)
 {
     if (!is_array($menu))
         return false;
