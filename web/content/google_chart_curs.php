@@ -1,3 +1,5 @@
+<a href="https://developers.google.com/chart/interactive/docs/gallery/linechart"> Документация Google line chart</a>
+
 <div id="google_chart">
 <?php
 

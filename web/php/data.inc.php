@@ -8,6 +8,7 @@ all pages contains in "content" folder
 
  */
 $chart_menu = array(
+	
     array('link' => 'google chart', 'href' => 'index.php?id=google_chart_curs'),
     array('link' => 'chartjs', 'href' => 'index.php?id=chartjs_line'),
     array('link' => 'd3 multi line', 'href' => 'index.php?id=d3_multi_line'),

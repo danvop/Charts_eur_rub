@@ -14,6 +14,9 @@ Header("Cache-Control: no-cache, no-store, must-revalidate, max-age=0");
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Custom styles for this template -->
+  <link href="css/justified-nav.css" rel="stylesheet">
+  <!-- <link href="css/sticky-footer-navbar.css" rel="stylesheet"> -->
 </head>
 <body>
     <!-- menu start-->
@@ -45,11 +48,27 @@ Header("Cache-Control: no-cache, no-store, must-revalidate, max-age=0");
             if (isset($_GET['id'])) {
                 $id = strtolower(cleanStr($_GET['id']));
                 include 'content/'.$id.'.php';
+            } else {
+               include 'content/home.php';
             }
+
             ?>
           
         </div>  
       </div>
+  
+  
+  
+  
+
   </div>
+  <div class="container-fluid">
+  <footer class="footer">
+  
+      <p>Этот проект на <a href="https://github.com/danvop/Charts_eur_rub">GitHub</a>
+      </p>
+  </footer>
+  </div>
+
   </body>
   </html>
