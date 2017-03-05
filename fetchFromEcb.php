@@ -7,6 +7,7 @@ $XML=simplexml_load_file("https://www.ecb.europa.eu/stats/policy_and_exchange_ra
 $db = new DB;
 foreach ($XML->DataSet->Series->Obs as $rate) {
     if ($rate["TIME_PERIOD"] > '2014-01-02') {
+        //insert to DB
         $db->insert('ecb_rate', [
         'date' => $rate["TIME_PERIOD"],
         'rate' => $rate["OBS_VALUE"]
