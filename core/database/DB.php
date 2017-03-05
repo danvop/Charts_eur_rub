@@ -25,6 +25,21 @@ class DB
         $stmt->execute();
         return var_dump($stmt->fetchAll(PDO::FETCH_ASSOC));
     }
+    
+    public function fetchCustomEcb($table, $days)
+    {   
+        //fetching days befor ecb rates from DB
+        $stopDate = date('Y-m-d');
+        $startDate = date("Y-m-d", strtotime("-$days day"));
+        $sql = "select * from {$table} where date < " . "'" . date('Y-m-d') . "'";
+        $sql = "select * from {$table} 
+                where date BETWEEN '{$startDate}' AND '{$stopDate}' ";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     public function insert($table, $parameters)
     {

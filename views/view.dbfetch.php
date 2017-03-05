@@ -5,4 +5,4 @@ $db = new DB;
 //     'date' => date("Y-m-d"),
 //     'ecb' => 70
 //     ]);
-$db->fetchAll('rub_rate');
+//$db->fetchAll('rub_rate');
