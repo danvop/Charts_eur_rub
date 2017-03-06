@@ -26,19 +26,40 @@ class DB
         return var_dump($stmt->fetchAll(PDO::FETCH_ASSOC));
     }
     
-    public function fetchCustomEcb($table, $days)
+    public function fetchCustom($table, $days)
     {   
         //fetching days befor ecb rates from DB
         $stopDate = date('Y-m-d');
         $startDate = date("Y-m-d", strtotime("-$days day"));
-        $sql = "select * from {$table} where date < " . "'" . date('Y-m-d') . "'";
-        $sql = "select * from {$table} 
-                where date BETWEEN '{$startDate}' AND '{$stopDate}' ";
+        $sql = "SELECT * FROM {$table} WHERE date < " . "'" . date('Y-m-d') . "'";
+        $sql = "SELECT * FROM {$table} 
+                WHERE date BETWEEN '{$startDate}' AND '{$stopDate}' ";
         
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function fetchCustomLeft($lTable, $rTable, $days)
+    {
+        $stopDate = date('Y-m-d');
+        $startDate = date("Y-m-d", strtotime("-$days day"));
+
+        $sql = "SELECT l.date, r.rate
+        FROM {$lTable} l
+        LEFT OUTER JOIN {$rTable} r on l.date = r.date
+        WHERE l.date BETWEEN '{$startDate}' AND '{$stopDate}' ";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // select l.date, r.rate
+        // from dates l
+        // LEFT OUTER JOIN ecb_rate r on l.date = r.date
+        // where l.date between '2017-02-20' and '2017-03-06';
+        
     }
 
     public function insert($table, $parameters)
