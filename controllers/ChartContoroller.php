@@ -18,7 +18,8 @@ class ChartController
         
         $db = new DB;
         
-        $rates = $db->fetchCustom($table, $days);
+        //$rates = $db->fetchCustom($table, $days);
+        $rates = $db->fetchCustomLeft($table, $days);
         foreach ($rates as $rec) {
             $labels[] = $rec['date'];
             $dataset[] = $rec['rate'];

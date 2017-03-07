@@ -41,13 +41,13 @@ class DB
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function fetchCustomLeft($lTable, $rTable, $days)
+    public function fetchCustomLeft($rTable, $days)
     {
         $stopDate = date('Y-m-d');
         $startDate = date("Y-m-d", strtotime("-$days day"));
 
         $sql = "SELECT l.date, r.rate
-        FROM {$lTable} l
+        FROM 'dates' l
         LEFT OUTER JOIN {$rTable} r on l.date = r.date
         WHERE l.date BETWEEN '{$startDate}' AND '{$stopDate}' ";
 
