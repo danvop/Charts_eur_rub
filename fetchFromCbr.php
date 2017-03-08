@@ -37,6 +37,7 @@ try {
 
         // initiate DB
         $db = new DB;
+        //if rate on date is null
         while ($curs_date != $tmp_date) {
             //echo "{$tmp_date} {$curs}</br>";
             $db->insert('cbr_rate', [
