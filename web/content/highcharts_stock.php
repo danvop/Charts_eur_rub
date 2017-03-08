@@ -1,1 +1,0 @@
-<a href="http://www.highcharts.com/stock/demo/compare">Highcharts stocks</a>
