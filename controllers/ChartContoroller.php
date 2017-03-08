@@ -57,10 +57,8 @@ class ChartController
         $datasets[] = $cbrChart;
         return require('views/view.index.php');
     }
-    
-// select d.date, e.rate, c.rate
-// from dates d
-// LEFT OUTER JOIN ecb_rate e on d.date = e.date
-// LEFT OUTER JOIN cbr_rate c on d.date = c.date
-// where d.date between '2017-02-20' and '2017-03-06';
+    public static function dailyRate()
+    {
+         $db = new DB;
+    }
 }
