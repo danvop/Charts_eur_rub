@@ -25,7 +25,13 @@ class DB
         $stmt->execute();
         return var_dump($stmt->fetchAll(PDO::FETCH_ASSOC));
     }
-    
+    public function getLastRate($table)
+    {   
+        $date = date('Y-m-d');
+        $stmt = $this->pdo->prepare("select rate from {$table} where date = '{$date}'");
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ)->rate;
+    }
     public function fetchCustom($table, $days)
     {   
         //fetching days befor ecb rates from DB
