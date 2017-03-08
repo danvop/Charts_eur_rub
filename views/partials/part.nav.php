@@ -18,6 +18,6 @@ $db = new DB;
             </li>
           </ul>
         </nav>
-        <a href="/"><h3 class="text-muted">Курс ЕВРО</h3>
+        <a href="/"><h3 class="text-muted">Курс ЕВРО</h3></a>
       </div> 
 </div>
