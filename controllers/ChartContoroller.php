@@ -11,6 +11,12 @@ class ChartController
         return require('views/view.index.php');
     }
 
+    /*
+     * [showChartByDays description]
+     * @param  [string] $table []
+     * @param  [string] $label [description]
+     * @param  [int] $days  [days before]
+     */
     public static function showChartByDays($table, $label, $days)
     {
         $Chart = new Chart;
@@ -29,13 +35,27 @@ class ChartController
         $datasets[] = $Chart;
         return require('views/view.index.php');
     }
-    public static function showTwoCharts()
+    public static function showTwoCharts($days)
     {
         $db = new DB;
         $ecbChart = new Chart;
         $cbrChart = new Chart;
         $ecbChart->label = 'Курс EUR Евро ЦБ';
         $cbrChart->label = 'Курс EUR ЦБ РФ';
+        $labels = array_column($db->fetchCustom('ecb_rate', $days), 'date');
+
+        $ecbChart->data = array_column($db->fetchCustom('ecb_rate', $days), 'rate');
+        $ecbChart->borderColor = "rgba(75,192,192,1)";
+
+        $cbrChart->data = array_column($db->fetchCustom('cbr_rate', $days), 'rate');
+        $cbrChart->borderColor = "rgba(255,0,0,0.5)";
+
+        // var_dump($ecbChart->data);
+        
+
+        $datasets[] = $ecbChart;
+        $datasets[] = $cbrChart;
+        return require('views/view.index.php');
     }
     
 // select d.date, e.rate, c.rate
