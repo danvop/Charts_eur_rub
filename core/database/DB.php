@@ -11,7 +11,7 @@ class DB
     {
         try {
             $this->pdo = new PDO('sqlite:database.sqlite');
-            // die(var_dump($pdo));
+            //die(var_dump(realpath(dirname(__FILE__))));
             // echo 'ok!';
             return $this->pdo;
         } catch (PDOException $e) {
