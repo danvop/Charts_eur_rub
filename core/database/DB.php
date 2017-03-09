@@ -31,6 +31,7 @@ class DB
         $stmt = $this->pdo->prepare("select rate from {$table} where date = '{$date}'");
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_OBJ)->rate;
+
     }
     public function fetchCustom($table, $days)
     {   
