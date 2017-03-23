@@ -13,7 +13,7 @@
 
 ### Установка
 1. Создать файл database.sqlite в корне проекта
-2. Создать таблицы
+2. Создать таблицы SQlite
 ```
 CREATE TABLE IF NOT EXISTS "cbr_rate" ("id" integer not null primary key autoincrement, "date" datetime null, "rate" real null);
 CREATE TABLE IF NOT EXISTS "cbr_rate" ("id" integer not null primary key autoincrement, "date" datetime null, "rate" real null);
